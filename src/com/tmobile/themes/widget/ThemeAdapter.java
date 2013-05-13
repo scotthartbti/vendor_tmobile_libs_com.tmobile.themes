@@ -22,6 +22,7 @@ import com.tmobile.themes.provider.Themes.ThemeColumns;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.res.CustomTheme;
 import android.database.Cursor;
 
@@ -35,9 +36,11 @@ public abstract class ThemeAdapter extends AbstractDAOItemAdapter<ThemeItem> {
         super(context, loadThemes(context), true);
     }
 
-    private static Cursor loadThemes(Activity context) {
-        return context.managedQuery(ThemeColumns.CONTENT_PLURAL_URI,
-                null, null, ThemeColumns.NAME);
+    @SuppressWarnings("deprecation")
+	private static Cursor loadThemes(Activity context) {
+    	return new CursorLoader(context, ThemeColumns.CONTENT_PLURAL_URI, null, null, null, ThemeColumns.NAME).loadInBackground();
+//        return context.managedQuery(ThemeColumns.CONTENT_PLURAL_URI,
+//                null, null, ThemeColumns.NAME);
     }
 
     /**

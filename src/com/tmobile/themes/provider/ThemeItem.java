@@ -59,6 +59,7 @@ public class ThemeItem extends AbstractDAOItem {
     private int mColumnIsSystem;
     private int mColumnIsApplied;
     private int mColumnPreviewUri;
+    private int mColumnPreviewHash;
     private int mColumnHasHostDensity;
     private int mColumnHasThemePackageScope;
 
@@ -107,6 +108,7 @@ public class ThemeItem extends AbstractDAOItem {
         mColumnIsSystem = c.getColumnIndex(ThemeColumns.IS_SYSTEM);
         mColumnIsApplied = c.getColumnIndex(ThemeColumns.IS_APPLIED);
         mColumnPreviewUri = c.getColumnIndex(ThemeColumns.PREVIEW_URI);
+        mColumnPreviewHash = c.getColumnIndex(ThemeColumns.PREVIEW_HASH);
         mColumnHasHostDensity = c.getColumnIndex(ThemeColumns.HAS_HOST_DENSITY);
         mColumnHasThemePackageScope = c.getColumnIndex(ThemeColumns.HAS_THEME_PACKAGE_SCOPE);
     }
@@ -254,6 +256,10 @@ public class ThemeItem extends AbstractDAOItem {
                     String.valueOf(orientation)).build();
         }
         return uri;
+    }
+    
+    public String getPreviewHash(){
+    	return mCursor.getString(mColumnPreviewHash);
     }
 
     /** @deprecated */

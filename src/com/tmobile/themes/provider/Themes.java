@@ -212,6 +212,7 @@ public class Themes {
 
         public static final String THUMBNAIL_URI = "thumbnail_uri";
         public static final String PREVIEW_URI = "preview_uri";
+        public static final String PREVIEW_HASH = "preview_hash";
 
         public static final String IS_SYSTEM = "system";
 
